@@ -1,0 +1,98 @@
+/* 1. Yeh aapki app ki main window/container hai (Yellow Background) */
+.contacts-container {
+
+  border-radius: 12px;
+  width: 320px;
+  padding: 16px; 
+  box-sizing: border-box; 
+}
+
+/* List ka gap */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Cards ke darmiyan gap */
+}
+
+/* 2. CARD KA APNA BACKGROUND (Ab yeh app se alag dikhega) */
+.contact-card {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  gap: 12px;
+  padding: 0 12px; 
+  
+  /* Alag background color aur halki si shadow taake card upar utha hua lage */
+  background-color: #ffffff; 
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+  
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect: Jab user card par mouse laye */
+.contact-card:hover {
+  transform: translateY(-2px); /* Card thoda upar uthega */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Icon/Emoji */
+.contact-card .profile {
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+}
+
+/* Text Container */
+.contact-card .content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+flex-grow: 1;
+  text-align: left !important; /* Forcefully left align */
+  align-items: flex-start !important;
+}
+
+.contact-card .content .name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #222222;
+  margin: 0;
+ text-align: left !important;
+}
+
+.contact-card .content .email {
+  font-size: 13px;
+  font-weight: 400;
+  color: #666666;
+  margin: 0;
+ text-align: left !important;
+}
+
+/* Buttons Container (Right Side) */
+.icon {
+  display: flex;
+ 
+  gap: 5px;
+  align-items: center;
+  margin-left: auto; 
+}
+
+/* Edit and Delete Buttons */
+.edit-btn, .del-btn {
+  border: none;
+  color: #222222;
+  background: transparent;
+  font-size: 26px; 
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+/* Buttons par hover effect */
+.edit-btn:hover, .del-btn:hover {
+  background-color: #f0f0f0;
+}

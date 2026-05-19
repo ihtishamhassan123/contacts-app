@@ -1,0 +1,11 @@
+.no-contact {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.no-contact p {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+}

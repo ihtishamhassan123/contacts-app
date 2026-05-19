@@ -1,0 +1,44 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+.overlay .modalbox {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 330px;
+}
+
+.overlay .yellowbutton {
+  background-color: yellow;
+}
+
+.overlay .yellowbutton:hover {
+  background-color: yellowgreen;
+  color: white;
+}
+
+.overlay .form-set {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.overlay .form-set input {
+  border: 1px solid black;
+  padding-left: 5px;
+  color: black;
+}
+
+.overlay .form-set input::placeholder {
+  color: black;
+}

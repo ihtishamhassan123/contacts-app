@@ -1,0 +1,56 @@
+.container {
+  width: 330px;
+  min-height: 100vh;
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.container input {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  height: 40px;
+  min-width: 246px;
+  border-radius: 10px;
+  padding-left: 30px;
+}
+
+.container input:hover {
+  border: 1px solid white;
+}
+
+.container input::placeholder {
+  color: white;
+}
+
+.container input:focus {
+  outline: none;
+}
+
+.container form {
+  display: flex;
+  margin-left: 16px;
+  gap: 18px;
+}
+
+.container .icon {
+  left: 5px;
+  top: 14px;
+  color: white;
+}
+
+.container .addicon {
+  color: white;
+  font-size: 40px;
+}
+
+/* CONTENT COMPONENT */
+.content {
+  display: flex;
+  justify-content: center;
+  min-height: calc(100vh - 100px);
+  align-items: center;
+  flex-direction: column;
+}
