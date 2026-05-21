@@ -53,4 +53,10 @@
   min-height: calc(100vh - 100px);
   align-items: center;
   flex-direction: column;
+  position: relative;
+}
+.toastify{
+position: absolute;
+left: 792px;
+
 }

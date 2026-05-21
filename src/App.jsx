@@ -6,8 +6,9 @@ import Nocontact from "./components/Nocontact";
 import AddContactUpdate from "./components/AddContactUpdate";
 import { useEffect, useState } from "react";
 import Contact from "./components/Contact";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "./firrebase";
+import { toast, ToastContainer } from "react-toastify";
 
 
 
@@ -15,7 +16,7 @@ const App  =()=>{
 const [addContact,setaddContact]=useState(false)
 const [isAdd,setAdd]=useState(false);
 const [isEdit,setIsEdit]=useState(false);
-const [error,setError]=useState(false);
+const [Error,setError]=useState(false);
 const [contacts, setContacts] = useState([]);
 const [selectedContact, setSelectedContact] = useState(null);
 
@@ -24,7 +25,16 @@ const [selectedContact, setSelectedContact] = useState(null);
        const name=e.target.value;
        console.log(name)  
     }
+const deleteContact = async (id) =>{
+   try {
+      await deleteDoc (doc(db,"contacts", id))
+      setContacts((prev) => prev.filter((item) => item.id !== id));
+toast.success("succefuuly deleted");
+   } catch (error) {
+      
+   }
 
+}
 
 const getContact = async ()=>{
 try {
@@ -37,7 +47,7 @@ try {
     setContacts(ContactData);
     console.log(ContactData)
 } catch (error) {
-        console.log(error);
+        console.log(Error);
 }
 
 }
@@ -62,9 +72,11 @@ return <>
         setIsEdit(false)
        }} className="addicon"/>
  </form>
+
  <div className="content ">
+    <ToastContainer className="toastify"/>
    
-    {contacts.length === 0 ? <Nocontact/> :  <Contact Contacts={contacts} setIsEdit={setIsEdit} setaddContact={setaddContact} setSelectedContact={setSelectedContact}/>}
+    {contacts.length === 0 ? <Nocontact/> :  <Contact selectedContact={selectedContact} deleteContact={deleteContact} Contacts={contacts} setIsEdit={setIsEdit} setaddContact={setaddContact} setSelectedContact={setSelectedContact}/>}
  
   
  </div>

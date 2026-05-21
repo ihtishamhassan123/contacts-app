@@ -4,7 +4,7 @@ import { MdDelete } from 'react-icons/md'
 import { TbEditCircle } from 'react-icons/tb'
 
 
-const Contact = ({ setIsEdit, setaddContact, Contacts,setSelectedContact }) => {
+const Contact = ({ setIsEdit, setaddContact, Contacts,setSelectedContact,deleteContact,selectedContact }) => {
   return (
     <>
       <div  className="contact-list" >
@@ -34,7 +34,10 @@ const Contact = ({ setIsEdit, setaddContact, Contacts,setSelectedContact }) => {
   >
     <TbEditCircle />
   </button>
- <MdDelete className="del-btn"/>
+ <MdDelete className="del-btn" onClick={()=>{
+  setSelectedContact(contact);
+  deleteContact(contact.id);
+ }}/>
 
 </div>
           </div>

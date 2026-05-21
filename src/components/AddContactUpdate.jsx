@@ -2,6 +2,7 @@ import "./AddContactUpdate.css"
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { useEffect,useState } from "react";
 import { db } from "../firrebase";
+import { toast } from "react-toastify";
 
 
 const AddContactUpdate =({setaddContact,IsEdit,selectedContact,setError,contacts})=>{
@@ -29,9 +30,22 @@ useEffect(() => {
     }
   }, [IsEdit, selectedContact]);
 const addContact = async () => {
-  if(!name || !email) return;
+  if(!name || !email) {
+    toast.error("Enter Email and Name");
+    return;
+    
+  };
+  if(!email.includes("@gmail.com")){
+    toast.error("Email Must End With @gmail.com");
+    return;
+  }
+    if(name.length < 3 ||  name.length >20){
+    toast.error("Name length be between 3 to 20");
+    return;
+  }
 
 try {
+  
 
   const alreadyExist = contacts.some(
     (contact)=>(contact.name === name)
@@ -39,18 +53,19 @@ try {
   if(
     alreadyExist
   ){
-     setError("Name already exists!");
+   toast.error("Name Already Exist")
   return;
   }
   await addDoc(collection(db,"contacts"),{
     name,
     email
   });
+  toast.success("Contact Added Sucessfully");
     setName("");
     setEmail("");
     setaddContact((prev)=>!prev);
 } catch (error) {
-  console.log(error)
+ toast.error("Can't Add Contact")
 
 }}
 
@@ -88,9 +103,11 @@ try {
       </div>
       <div className="modal-footer d-flex gap-3 mt-4">
         <button onClick={()=>setaddContact(false)} type="button" className="btn btn-secondary" data-bs-dismiss="modal ">Close</button>
-        <button onClick={()=>(
+        <button onClick={()=>{
           
-          IsEdit ? HandleUpdate(): addContact()) 
+          IsEdit ? HandleUpdate(): addContact();
+         setaddContact(false)}
+         
           
           } type="button" className="btn yellowbutton"> {IsEdit ? "Update" :"Ädd"} Contact</button>
       </div>
