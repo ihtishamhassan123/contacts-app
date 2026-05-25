@@ -1,18 +1,22 @@
 .container {
   width: 330px;
   min-height: 100vh;
-  background-color: grey;
+  background-color: #0f172a;
   display: flex;
   flex-direction: column;
+    box-shadow: 0 0 30px rgba(0,0,0,0.35);
+
   gap: 10px;
 }
 
 .container input {
-  background-color: transparent;
-  color: white;
-  border: 1px solid white;
+background: #111827;
+
+color: white;
+  border: 1px solid #1e293b;
+   transition: 0.25s ease;
   height: 40px;
-  min-width: 246px;
+  min-width: 230px;
   border-radius: 10px;
   padding-left: 30px;
 }
@@ -26,24 +30,33 @@
 }
 
 .container input:focus {
-  outline: none;
+   border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.18);
 }
 
 .container form {
   display: flex;
   margin-left: 16px;
-  gap: 18px;
+  gap: 5px;
 }
 
 .container .icon {
   left: 5px;
-  top: 14px;
+  top: 12px;
   color: white;
 }
 
 .container .addicon {
-  color: white;
-  font-size: 40px;
+background: #6366f1;
+color: white;
+    width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: 0.25s ease
+}
+.addicon:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 18px rgba(99,102,241,0.55);
 }
 
 /* CONTENT COMPONENT */
@@ -59,4 +72,56 @@
 position: absolute;
 left: 792px;
 
+}
+
+
+.custom-toast {
+  background: rgba(15, 23, 42, 0.96) !important;
+  color: #f8fafc !important;
+  border-radius: 16px !important;
+  padding: 14px !important;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+  backdrop-filter: blur(10px);
+}
+
+.custom-toast-body {
+  font-size: 15px;
+  font-weight: 500;
+  padding: 2px;
+}
+
+.custom-progress {
+  background: linear-gradient(to right, #6366f1, #8b5cf6) !important;
+}
+
+.Toastify__close-button {
+  color: #cbd5e1 !important;
+  opacity: 1 !important;
+  transition: 0.2s ease;
+}
+
+.Toastify__close-button:hover {
+  color: white !important;
+  transform: scale(1.1);
+}
+
+.Toastify__toast-icon svg {
+  fill: #6366f1;
+}
+
+.Toastify__toast--success {
+  border-left: 4px solid #22c55e;
+}
+
+.Toastify__toast--error {
+  border-left: 4px solid #ef4444;
+}
+
+.Toastify__toast--warning {
+  border-left: 4px solid #facc15;
+}
+
+.Toastify__toast--info {
+  border-left: 4px solid #3b82f6;
 }

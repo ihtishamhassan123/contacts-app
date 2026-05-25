@@ -4,16 +4,37 @@ import { MdDelete } from 'react-icons/md'
 import { TbEditCircle } from 'react-icons/tb'
 
 
-const Contact = ({ setIsEdit, setaddContact, Contacts,setSelectedContact,deleteContact,selectedContact }) => {
+const Contact = ({ setIsEdit, setaddContact, Contacts,filterData,setSelectedContact,deleteContact,selectedContact }) => {
+  const getColor = (name) => {
+  const colors = [
+    "#f87171",
+    "#60a5fa",
+    "#34d399",
+    "#fbbf24",
+    "#a78bfa",
+    "#fb7185",
+    "#22c55e",
+    "#38bdf8",
+  ];
+
+  const index = name?.charCodeAt(0) % colors.length;
+  return colors[index];
+};
+  
+  
+  
+  
   return (
     <>
       <div  className="contact-list" >
-      {Contacts?.map((contact) => (
+      {filterData?.map((contact) => (
      
        <div className='contactse' key={contact.id}>
           <div  className='contact-card'>
-            <div>
-              <CgProfile className='profile' />
+            <div className="profile" style={{backgroundColor: getColor(contact.name)}}>
+              <p>{contact.name?.charAt(0).toUpperCase()}</p>
+              
+            
             </div>
             <div className='content'>
               <p className='name'>{contact.name}</p>
